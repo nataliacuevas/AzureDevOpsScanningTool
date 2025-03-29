@@ -3,6 +3,7 @@ from dateutil import parser
 from ADOuser import ADOuser
 from ADOproject import ADOproject
 from ADOrequester import ADOrequester
+from ADOgroup import ADOgroup
 
 def useArgParse() -> dict:
     # Create the parser
@@ -32,6 +33,7 @@ def main() -> None:
     # response1 : dict = requester.GETallProjectsWithinOrg()
 
     requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
+    """ 
     users = requester.getUserList()
     for user in users:
         print(user)
@@ -46,6 +48,15 @@ def main() -> None:
         for member in members:
             print(f"#  {member.displayName}")
         print(80 * "*")
+    
+    """
+
+    descriptor = "vssgp.Uy0xLTktMTU1MTM3NDI0NS0yMDE1NjUxODU0LTM4MzE5MDQ4NDEtMzE1MDQ4MzU0NS0xMjk1OTE5NDY3LTAtMC0wLTAtMw"
+    group : ADOgroup = requester.lookupDescriptors([descriptor])[0]
+    print(group)
+    nestedMembers : list[ADOuser] = requester.getNestedUserMembersofGroup(group)
+    for member in nestedMembers:
+        print(member)
 
    # response1 = requester.GETlistOfUsersInOrg()
    # print(response1)

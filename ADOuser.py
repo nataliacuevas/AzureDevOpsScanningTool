@@ -1,6 +1,5 @@
 
 
-
 class ADOuser: 
     def __init__(self, propertiesResponse : dict):
         # Standard project attributes
@@ -30,3 +29,8 @@ class ADOuser:
                 f"URL: {self.url}\n"
                 f"Descriptor: {self.descriptor}")
     
+    def __eq__(self, value):
+        return self.descriptor == value.descriptor
+    
+    def __hash__(self):
+        return hash(self.descriptor)
