@@ -1,52 +1,8 @@
 import argparse
-import base64
-import requests
-
-class ADOrequester:
-    def __init__(self, pat: str, org: str):
-        self.pat = pat
-        self.org = org
-
-    def getHeaders(self) -> dict:       
-        # Encode the PAT in Base64 - required by Azure DevOps API -
-        pat_base64 = base64.b64encode(f":{self.pat}".encode()).decode()
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Basic {pat_base64}"
-        }
-        return headers
-    
-    def GETrequest(self, urlSuffix: str, domain: str = "dev.azure.com") -> any:
-        url = f"https://{domain}/{self.org}/_apis/{urlSuffix}"
-        print(f"GET {url}")
-        # Set up the headers with the PAT for authentication
-        headers = self.getHeaders()
-
-        # Make the GET request
-        response = requests.get(url, headers=headers)
-
-        # Check the response status code
-        if response.status_code == 200:
-            # Parse the JSON response
-            data = response.json()
-            return data
-        else:
-            print(f"Failed to retrieve data. Status code: {response.status_code}")
-            raise Exception(response.text)
-        
-    def GETsecurityNamespaces(self) -> any: 
-        return self.GETrequest("securitynamespaces/?api-version=7.1")
-    
-    def GETpermissionsGivenSecurityNamespaceId(self) -> any:
-        securityNamespaceId = "52d39943-cb85-4d7f-8fa8-c6baac873819" # Project NamespaceID
-        permissions = "1" 
-        return self.GETrequest(f"permissions/{securityNamespaceId}/{permissions}?api-version=7.1")
-
-    def GETlistOfUsersInOrg(self) -> any:
-        return self.GETrequest("graph/users?api-version=7.1-preview.1", domain="vssps.dev.azure.com") 
-    
-    def GETallProjectsWithinOrg(self) -> any:
-        return self.GETrequest("projects?api-version=7.1")
+from dateutil import parser
+from ADOuser import ADOuser
+from ADOproject import ADOproject
+from ADOrequester import ADOrequester
 
 def useArgParse() -> dict:
     # Create the parser
@@ -67,12 +23,32 @@ def useArgParse() -> dict:
 
 def main() -> None:
     argsDict = useArgParse()
-    print(f"PAT: {argsDict['patToken']}, ORG: {argsDict['Org']}")
+
+    #requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
+    #projects = requester.getProjectsList()
+    #for project in projects:
+    #   print(project)
+    #   print(80 * "*")
+    # response1 : dict = requester.GETallProjectsWithinOrg()
 
     requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
+    users = requester.getUserList()
+    for user in users:
+        print(user)
+        print(80 * "*")
 
-    response1 = requester.GETallProjectsWithinOrg()
-    print(response1)
+    groups = requester.getGroupList()
+    for group in groups:
+        print(group.principalName)
+        members = requester.getGroupMembers(group)
+        if len(members) == 0:
+            print('#  No Members')
+        for member in members:
+            print(f"#  {member.displayName}")
+        print(80 * "*")
+
+   # response1 = requester.GETlistOfUsersInOrg()
+   # print(response1)
 
     # request(argsDict["Org"], argsDict["patToken"])
     # request2(argsDict["Org"], argsDict["patToken"])
