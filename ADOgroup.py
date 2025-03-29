@@ -26,3 +26,9 @@ class ADOgroup:
                 f"Links: {self._links}\n"
                 f"URL: {self.url}\n"
                 f"Descriptor: {self.descriptor}")
+    
+    def __eq__(self, value):
+        return self.descriptor == value.descriptor
+    
+    def __hash__(self):
+        return hash(self.descriptor)

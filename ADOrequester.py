@@ -85,6 +85,9 @@ class ADOrequester:
         return self.GETrequest("graph/groups?api-version=7.1-preview.1", domain="vssps.dev.azure.com")
     
     def getGroupList(self) -> list[ADOgroup]:
+        """
+        Provides a list with all the ADO groups within an organization 
+        """
         response : dict = self.GETGroupList()
         value : list[dict] = response['value']
         groups = [ADOgroup(val) for val in value]
@@ -136,3 +139,16 @@ class ADOrequester:
                 nestedUsers.extend(subNestedUsers)
         
         return list(set(nestedUsers))
+
+    def getAllProjectAdmins(self) -> dict[ADOgroup, list[ADOuser]]:
+        """
+        Returns a dictionary where the keys are group descriptors corresponding to the project admin groups 
+        and the corresponding values are the project admins list 
+        """
+        output : dict[ADOgroup, list[ADOuser]] = {}
+        groups : list[ADOgroup] = self.getGroupList()
+        for group in groups:
+            if group.displayName == "Project Administrators":
+                admins : list[ADOuser ]= self.getNestedUserMembersofGroup(group)
+                output[group] = admins
+        return output
