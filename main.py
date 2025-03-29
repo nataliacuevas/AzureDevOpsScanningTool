@@ -22,23 +22,27 @@ def useArgParse() -> dict:
     return {"patToken": args.pat,
             "Org": args.org}
 
-def main() -> None:
+def test_getNestedUserMembersofGroup():
     argsDict = useArgParse()
-
-    #requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
-    #projects = requester.getProjectsList()
-    #for project in projects:
-    #   print(project)
-    #   print(80 * "*")
-    # response1 : dict = requester.GETallProjectsWithinOrg()
-
     requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
-    """ 
+    descriptor = "vssgp.Uy0xLTktMTU1MTM3NDI0NS0yMDE1NjUxODU0LTM4MzE5MDQ4NDEtMzE1MDQ4MzU0NS0xMjk1OTE5NDY3LTAtMC0wLTAtMw"
+    group : ADOgroup = requester.lookupDescriptors([descriptor])[0]
+    print(group)
+    nestedMembers : list[ADOuser] = requester.getNestedUserMembersofGroup(group)
+    for member in nestedMembers:
+        print(member)
+
+def test_getUserList():
+    argsDict = useArgParse()
+    requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
     users = requester.getUserList()
     for user in users:
         print(user)
         print(80 * "*")
 
+def test_getGroupList():
+    argsDict = useArgParse()
+    requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
     groups = requester.getGroupList()
     for group in groups:
         print(group.principalName)
@@ -48,22 +52,24 @@ def main() -> None:
         for member in members:
             print(f"#  {member.displayName}")
         print(80 * "*")
-    
-    """
 
-    descriptor = "vssgp.Uy0xLTktMTU1MTM3NDI0NS0yMDE1NjUxODU0LTM4MzE5MDQ4NDEtMzE1MDQ4MzU0NS0xMjk1OTE5NDY3LTAtMC0wLTAtMw"
-    group : ADOgroup = requester.lookupDescriptors([descriptor])[0]
-    print(group)
-    nestedMembers : list[ADOuser] = requester.getNestedUserMembersofGroup(group)
-    for member in nestedMembers:
-        print(member)
+def test_getProjectList():
+    argsDict = useArgParse()
+    requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
+    projects = requester.getProjectsList()
+    for project in projects:
+       print(project)
+       print(80 * "*")
 
-   # response1 = requester.GETlistOfUsersInOrg()
-   # print(response1)
-
-    # request(argsDict["Org"], argsDict["patToken"])
-    # request2(argsDict["Org"], argsDict["patToken"])
-    # request4(argsDict["Org"], argsDict["patToken"])
-
+def main() -> None:
+    argsDict = useArgParse()
+    requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
+    adminDict : dict[ADOgroup, list[ADOuser]] = requester.getAllProjectAdmins()
+    for key , value in adminDict.items():
+        print(key.principalName)
+        for admin in value: 
+            print(admin)
+            print(80*"--")
+            
 if __name__ == "__main__":
     main()
