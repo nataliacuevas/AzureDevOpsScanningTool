@@ -105,6 +105,12 @@ class ADOrequester:
         return self.POSTrequest(f"graph/subjectLookup?api-version=7.1-preview.1", body,  domain="vssps.dev.azure.com")
     
     def lookupDescriptors(self, descriptors: list[str]) -> list[ADOgroup |ADOuser]:
+        """
+        Fn that takes a list of descriptors and returns a corresponding list of subjects, 
+        for instance with the input [vssgp.Uy0xLTktMTU1MTM3NDI0NS0yMDE1NjUxODU0LTM4MzE5MDQ4NDEtMzE1MDQ4MzU0NS0xMjk1OTE5NDY3LTAtMC0wLTAtMw]
+        would return a list containing the single group corresponding to this descriptor
+
+        """
         response : dict = self.POSTlookupDescriptors(descriptors)
         value : dict = response['value']
         output = []
@@ -118,3 +124,15 @@ class ADOrequester:
                 raise Exception(f'Unexpected Subject Kind: {subject}')
             
         return output
+
+    def getNestedUserMembersofGroup(self, group: ADOgroup) -> list[ADOuser]:
+        members : list[ADOuser | ADOgroup] = self.getGroupMembers(group)
+        nestedUsers : list[ADOuser] = []
+        for member in members: 
+            if isinstance(member, ADOuser): 
+                nestedUsers.append(member)
+            else:
+                subNestedUsers : list[ADOuser] = self.getNestedUserMembersofGroup(member)
+                nestedUsers.extend(subNestedUsers)
+        
+        return list(set(nestedUsers))
