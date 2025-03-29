@@ -1,3 +1,5 @@
+import re
+
 class ADOgroup: 
     def __init__(self, propertiesResponse : dict):
         # Standard project attributes
@@ -32,3 +34,11 @@ class ADOgroup:
     
     def __hash__(self):
         return hash(self.descriptor)
+        
+    def getProjectName(self):
+        self.principalName 
+        match = re.search(r'\[(.*?)\]', self.principalName)
+        if match:
+            return match.group(1)
+        else: 
+            raise Exception(f"Principal Name missing Project Name: {self.principalName}")
