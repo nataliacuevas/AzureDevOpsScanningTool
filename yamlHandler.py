@@ -5,17 +5,6 @@ from datetime import datetime
 from ADOgroup import ADOgroup
 from ADOuser import ADOuser
 
-
-class configHandler:
-    def __init__(self):
-        self.configFile = "reportConfig.yaml"
-
-        with open(self.configFile, 'r') as file:
-            self.data : dict = yaml.safe_load(file)
-
-    def MaxNumberProjectAdmins(self):
-        return self.data["MaxNumberProjectAdmins"]
-    
 class reportHandler:
     def __init__(self):
         now = datetime.now()

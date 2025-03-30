@@ -5,8 +5,9 @@ from ADOuser import ADOuser
 from ADOproject import ADOproject
 from ADOrequester import ADOrequester
 from ADOgroup import ADOgroup
-from yamlHandler import configHandler, reportHandler
+from yamlHandler import reportHandler
 from reportWarnings import reportWarning
+from configHandler import configHandler
 
 
 def useArgParse() -> dict:
@@ -108,7 +109,8 @@ def main() -> None:
     requester = ADOrequester(argsDict["patToken"], argsDict["Org"])
     adminDict : dict[ADOgroup, list[ADOuser]] = requester.getAllProjectAdmins()
     report = reportHandler()
-    report.addWarnings([])
+    warnings: list[reportWarning] = reportWarning.createMaxAdminWarningList(adminDict)
+    report.addWarnings(warnings)
     report.addBody(argsDict["Org"], adminDict)
     report.generateReport()
     
