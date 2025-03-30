@@ -1,5 +1,6 @@
 import base64
 import requests
+import logging
 from ADOuser import ADOuser
 from ADOproject import ADOproject
 from ADOgroup import ADOgroup
@@ -21,7 +22,7 @@ class ADOrequester:
     
     def GETrequest(self, urlSuffix: str, domain: str = "dev.azure.com") -> any:
         url = f"https://{domain}/{self.org}/_apis/{urlSuffix}"
-        print(f"GET {url}")
+        logging.debug(f"GET {url}")
         # Set up the headers with the PAT for authentication
         headers = self.getHeaders()
 
@@ -34,12 +35,12 @@ class ADOrequester:
             data = response.json()
             return data
         else:
-            print(f"Failed to retrieve data. Status code: {response.status_code}")
+            logging.critical(f"Failed to retrieve data. Status code: {response.status_code}")
             raise Exception(response.text)
         
     def POSTrequest(self, urlSuffix: str, body: any, domain: str = "dev.azure.com") -> any:
         url = f"https://{domain}/{self.org}/_apis/{urlSuffix}"
-        print(f"POST {url}")
+        logging.debug(f"POST {url}")
         # Set up the headers with the PAT for authentication
         headers = self.getHeaders()
 
@@ -52,7 +53,7 @@ class ADOrequester:
             data = response.json()
             return data
         else:
-            print(f"Failed to post data. Status code: {response.status_code}")
+            logging.critical(f"Failed to post data. Status code: {response.status_code}")
             raise Exception(response.text)
 
     def GETsecurityNamespaces(self) -> any: 
