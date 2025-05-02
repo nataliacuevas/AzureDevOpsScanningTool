@@ -1,8 +1,12 @@
 import './App.css';
 import { useState } from 'react';
+import Header from './components/Header';
+import Form from './components/Form';
+import Report from './components/Report';
 
 function App() {
   const [pat, setPat] = useState('');
+  const [report, setReport] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +20,8 @@ function App() {
       });
       const data = await response.json();
       console.log(data);
-      setPat(''); // Clear the input field after submission
+      setPat('');
+      setReport(data);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -24,30 +29,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="/pfLogo.svg" className="App-logo" alt="logo" />
-        <p>
-          PrimeFaktor Azure DevOps Security Analyzer <br/>
-          Please Provide a PAT
-        </p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="password"
-            placeholder="Enter your PAT"
-            value={pat}
-            onChange={(e) => setPat(e.target.value)}
-          />
-          <button type="submit">Send PAT</button>
-        </form>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Form pat={pat} setPat={setPat} handleSubmit={handleSubmit} />
+      {report && <Report report={report} />}
     </div>
   );
 }
