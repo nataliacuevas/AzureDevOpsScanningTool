@@ -13,6 +13,36 @@
   pointer-events: none;
 }
 
+.header-logo-spin {
+  height: 25vmin;
+  pointer-events: none;
+  animation: header-logo-spin infinite 2s linear; /* Faster spin for loading */
+}
+
+.header-logo-error {
+  height: 25vmin;
+  pointer-events: none;
+  filter: drop-shadow(5px 5px 5px red); /* Add red color effect */
+  
+}
+
+@keyframes header-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .header-text {
   text-align: center;
+}
+
+.hidden-header-text {
+  display: none; /* Hide the object */
+}
+
+.h6vmin {
+  height: 6vmin;
 }
