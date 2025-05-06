@@ -13,10 +13,7 @@ class reportHandler:
 
     def addWarnings(self, warnings: list[reportWarning]) -> None:
         logging.debug("Adding warnings to report")
-        if len(warnings) == 0:
-            self.content["WARNINGS"] = "There are no warnings. CONGRATULATIONS!!! "
-        else: 
-            self.content["WARNINGS"] = [rWarning.toDict() for rWarning in warnings]
+        self.content["WARNINGS"] = [rWarning.toDict() for rWarning in warnings]
     
     def addBody(self, orgName: str, projectAdmins: dict[ADOgroup, list[ADOuser]])-> None:
         logging.debug("Adding body to report")
