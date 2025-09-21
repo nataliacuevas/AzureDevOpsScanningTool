@@ -1,0 +1,286 @@
+Transcript
+September 7, 2025, 1:48PM
+
+Interviewer   0:04
+Before we begin, I would like to confirm a few points. This interview will be audio recorded for research purposes only. Your responses will remain confidential, and any identifying information will be anonymized in the final report.
+Participation is voluntary. You may decline to answer any question or withdraw from the interview at any time without consequence. Do you agree to proceed with the interview under these conditions?
+
+Expert_1   0:31
+Yes.
+
+Interviewer   0:32
+Great. Thank you for agreeing to participate in this study. The purpose of this interview is to explore factors that contribute to the over-provisioning of Azure DevOps project administrators, assess the relative importance of those factors, and evaluate how a proposed mitigation strategy addresses them.
+The interview will follow 3 stages. First, identifying factors contributing to over-provisioning. Second, assessing the relative impact of those factors. Third, evaluate how effectively the mitigation strategy addresses them.
+Your expertise is central to this process, and there are no right or wrong answers. I am interested in your professional perspective.
+Before we move to the main questions, I would like to collect some background information. What is your current role or area of professional practice?
+
+Expert_1   1:24
+So I currently work as a security architect, particularly for applications. I have been working as a security architect for the last three years, although I have an IT career that spans more years, I would say four more years in the past.
+Working as a IT developer and also while working in research in the area of mathematics.
+
+Interviewer   1:52
+OK, how many years of experience do you have in this area?
+
+Expert_1   1:56
+So in in security architecture, let's say three years more or less, where I have been deeply working with security topics.
+
+Interviewer   2:07
+What is your experience with Azure DevOps, particularly in relation to project administration and permissions management?
+
+Expert_1   2:16
+The last portion of my career, I have been deeply involved with its administration and its assessment. I do have customers with whom I do assessments of their systems and obviously, part of the CI/CD workflows or how they deploy code into production. It's part of the assessment, and here Azure DevOps plays a central role. So, I have been quite knowledgeable in this field for the last three years. Prior to this, I worked as a developer, where I was on the user side, so I used it. I have experience on both sides, let's say.
+
+Interviewer   2:59
+OK, great. Now the primary question is:
+ “What would you say are factors that contribute to the over-provisioning of Azure DevOps Project Administrators”?
+
+Expert_1   3:13
+For over-provisioning, I would say that the main issue I've seen in my customers is that the project administrator is the smallest unit of administration.
+Meaning that there's no way to provide users with a more granular role to administer other users. That would be a strong contender.
+
+Interviewer   4:02
+So, project administrators being the smallest unit of administration of user administration.
+
+
+Expert_1   4:12
+Yeah, that would be one of the factors. The other factor is that there are too many users when these projects are too big. There are too many users in a project that demands a lot of administration of these users.
+
+Interviewer   4:35
+Too many users in a project.
+
+Expert_1   4:37
+Mm-hmm. The next one would be the diversity of the team. So, it is not just a single team that typically uses an Azure DevOps project, rather they are, you know, since it's a collaboration tool, there are multiple teams that work together.
+They are inspecting the tickets on the Boards, development, do requests. And these collaboration that spans, let's say, multiple areas require user administration for multiple areas and the same user that administers members.
+From one team that doesn't have the knowledge or the understanding of the other teams to administer them. So essentially every team needs to bring their own administration person.
+Yeah, I would say this what you wrote is the correct description.
+
+Interviewer   5:29
+OK.
+So diversity / too many teams from different areas in the same project.
+
+Expert_1   5:37
+Yes, exactly.
+
+Interviewer   5:38
+OK.
+
+
+Expert_1   5:53
+Another factor I could think of is just the general lack of security knowledge or background. So essentially, the people who are given this platform are small teams. Obviously, they get diversified, but they are not provided by anyone with security expertise to guide them on how to set this up in a secure way. So, they are very generous with the provisioning of administrators.  And now that I think about this, there are too many supporting roles that are more on the management side, let’s say a scrum master or a PO that are given the role to administer users, and they have absolutely no knowledge of security, and these roles are given the duty of managing users.
+
+
+Expert_1   7:23
+And obviously, all of these management users are added as project admins.
+
+Interviewer   7:32
+So supporting roles are given project administrators roles/privileges
+
+
+Interviewer   8:03
+Can you think of factors that originate from the permission architecture of the platform?
+
+
+Expert_1   8:34
+I don't see a particular issue with this, let's say tree structure. I cannot think of another factor from this point of view.
+
+Interviewer   8:50
+OK, can you think of factors that originate from limitations of the platform?
+
+Expert_1   8:56
+That's probably on the same area, right? you're limited, you cannot distribute this load. Oh, that may be another factor! That the biggest load for a project administrator is user management.
+You know, project administrators obviously have to get permissions, can help keep permissions to Pipelines and so on. But the biggest portion of all the effort after the project is set up and you have all the permissions already set up. What is always in change is user management. Users are added and removed. So yeah, obviously a contributing factor which increases the load of the users.
+
+Interviewer   9:55
+So, the biggest load of project administrators is user management (Add or remove users).
+
+
+Expert_1   10:02
+Oh, yes, OK.
+
+Interviewer   10:04
+Can you think of factors that originate from how the users utilize the platform?
+
+Expert_1   10:14
+OK, so I already mentioned that there are too many users, right? And they invite people from other places/areas. I think of another factor, which is the misuse of the platform. Just to give an example, I've seen, for instance, that these people have no real security knowledge. They might at some point treat the project as some sort of public platform, and I've seen even the use of the wiki of a project as a public wiki to be shared with the whole company, and to do that, they added every person in the company as a reader in the project. So that's misuse. That's not the purpose of Azure DevOps. So, for something to be public, probably a better idea is to use other platform, right?
+
+Interviewer   11:18
+OK, so it would be the misuse of the platform by the users.
+
+Expert_1   11:27
+Right. I mean that the misuse the platform leads to over provisioning. 
+
+Interviewer   11:39
+OK, Can you think of factors that originate from the responsibilities of the users?
+
+Expert_1   11:51
+Uh. Let's see... So users, well, their responsibility. So obviously, if only one user were in charge of user management, that would be their responsibility, but many roles intersect with user management.
+So I mentioned P.O.s and the other scrum masters, but I think I mentioned something about this, so I think it's covered.
+
+Interviewer   12:25
+OK. Can you think of factors that originate from how teams typically organize themselves?
+
+Expert_1   12:34
+I guess I already mentioned it, right? So there are too many teams for different areas in the project. So they organize themselves into units to collaborate. Beyond what I said, I don't have another factor to mention here.
+
+Interviewer   12:52
+Can you think of factors that originate from the services that the platform provides?
+
+Expert_1   13:01
+Oh yes, definitely, right. So that would be another factor that essentially promotes its misuse for collaboration. The platform provides too many services in the same identity concept and obviously this promotes collaboration, which I guess it's a positive thing for them, but this also promotes that too many people collaborate. So yeah, too many services in the same permission management.
+
+Interviewer   13:41
+So, too many services in the same identity concept promoting collaboration across teams.
+
+Interviewer   14:06
+Can you think of factors that originate from standard reasons that are common in any platform that provides permission management?
+
+Expert_1   14:17
+Well, the standard reason of over provisioning would be the lack of security knowledge. I mean, this is endemic to every organization. 
+The distributed nature of permissions. So essentially anyone can create a new project administrator. So that would be maybe another factor. Users are allowed to create new project administrators with too much ease, thus increasing the number of project administrators.
+
+Interviewer   14:59
+Too easy to create or assign project administrators.
+
+Expert_1   15:07
+Right. I don't know if too easy is the word, but I guess it's understood. No matter how the system is, you just need an administrator to propose another administrator. Although this is very typical of all platforms that have some sort of permission management, but that definitely contributes to this issue.
+
+Interviewer   15:18
+So now I would like you, I would like to ask you to consider the relative impact of the factors you mentioned. For each factor, please indicate whether you see it as having a low, medium, or high impact on over-provisioning.
+These are described as: 
+-	low impact: The factor contributes, but only marginally.
+-	Medium impact: the factor contributes substantially, though not decisively.
+-	High impact: the factor is a primary driver of the problem of over-provisioning.
+
+
+Expert_1   16:27
+OK, so I have the list here. Let's start with the highs. For me, the most important one is that the project administrator is the smallest unit of administration. That is definitely scored as high.
+Too many users in a project, diversity in too many teams. That is also high. I mean, if there aren't many users, you wouldn't have over-provisioning.
+The same for diversity. I think this was essentially the same problem. So also high.
+
+Interviewer   17:06
+But would you consider them the same factor?
+
+Expert_1   17:07
+No. I mean, in my head it's more or less the same, but let's say high.
+Lack of security knowledge of users of the platform that is definitely contributing, but this can be expected of any system, and obviously the ideal system should be one that doesn't allow you to make mistakes, right? You should never trust users.
+So I would rate this as low.
+Then, supporting roles are given the administrator role, that's high.
+Biggest load of project administrators is user management. That would be high.
+Misuse of the platform by users. That's a problem, but I wouldn't say it's a critical one. I mean they're using the platform in general as they should use it. So, I would say low here.
+Too many services in the same identity concept. That definitely helps, right? I would say medium in this one.
+And regarding being too easy to assign project administrators. Yeah, that's very margin. I mean, I wouldn't know how else to design this, unless there is like a central unit that assigns, but then that person would be full of work. So let's say this is low. I mean, if you could have a controlling entity that takes care of this, that would be fantastic, but that's unfeasible.
+
+Interviewer   18:44
+OK, great. Thank you. Next, I will introduce a proposed mitigation strategy that aims to reduce the over-provisioning of Azure DevOps program administrators. The strategy is composed of two main units: a user management strategy together with an enterprise-wide policy.
+The policy is to limit the number of Azure DevOps project administrators at the project level. This can be implemented by a scanning solution that alerts about violations of the policy. The second unit is a user management strategy where the teams are compelled to exclusively use Entra ID groups to assign permissions to users and then to assign owners to these Entra ID groups, which would take over the user management tasks.
+Do you have any questions regarding the proposed strategy?
+
+Expert_1   19:36
+So what you're saying is that to manage users, we use Entra ID, right? We create groups and then the administrator would give permission to this groups.
+
+Interviewer   20:04
+Yes.
+
+Expert_1   20:05
+OK, I think I understood it.
+
+Interviewer   20:08
+OK, great.
+OK, so for each factor we discussed earlier, please indicate the degree to which you believe the mitigation strategy addresses it. 
+- No mitigation: it means the strategy does not address the factor.
+- Low mitigation: the strategy addresses the factor only marginally.
+- Medium mitigation: The strategy addresses the factors substantially, but not fully. - High mitigation: The strategy completely addresses the factor. 
+OK, so I will go one by one with you through the mentioned factors so you can score them. 
+The first one, program administrators is the smallest unit of user administration. 
+
+Expert_1   20:54
+Oh, yeah, this was definitely high, right? It's targeting this with the Entra ID idea, right? So obviously this would be high.
+
+Interviewer   21:01
+Too many users in a project?
+
+Expert_1   21:07
+It doesn't address it at all. I would say no.
+
+Interviewer   21:13
+Diversity / too many teams from different areas in a project.
+
+Expert_1   21:20
+I would say also no, it doesn't help this.
+
+Interviewer   21:31
+A lack of security knowledge by the users on the platform.
+
+Expert_1   21:35
+it doesn't help to improve the lack of the security knowledge. So, No. 
+
+Interviewer   21:41
+Supporting roles are given to the project administrator role.
+
+Expert_1   21:45
+Now I wonder because the strategy that you mention, I mean obviously doesn't mitigate the fact that supported roles are given to the project administrator role, but it does mitigate the fact that this factor affects the problem. Let me revise my answers.
+So, the supporting roles are given to the project administrator role. I would say yes, it'll mitigate this factor completely. It allows you for the supported roles to be managed by themselves without contributing to over-provisioning. So let's say high.
+
+
+Expert_1   22:33
+And then I would also mark as high the diversity, the factor in index three and four. So that one and the one above, yeah.
+
+Interviewer   22:47
+So, diversity or too many teams from different areas in a project you score it as high, and also the one above on the table (too many users in a project).
+
+Expert_1   22:49
+Yes. So essentially, there will still be too many users in the project, but they will not contribute to over-provisioning if they are being managed through Entra ID.
+
+
+Interviewer   23:21
+The biggest load of a project administrator is user management (add or remove users from a project).
+
+Expert_1   23:26
+All right, here I would say high. I guess the whole idea of this Entra ID strategy is for the project administrators to not have too much load, right?
+
+Interviewer   23:42
+Yes. 
+
+
+Interviewer   23:44
+Misuse of the platform by the users.
+
+Expert_1   23:45
+That is definitely no. So, if they misuse it, you cannot stop it with this idea/strategy.
+
+Interviewer   23:53
+Too many services in the same identity concept promote collaboration across teams.
+
+Expert_1   23:58
+I score that with a no.
+
+Interviewer   24:01
+Too easy to assign project administrators.
+
+Expert_1   24:04
+Also no.
+
+Interviewer   24:09
+OK, thank you for your participation and for sharing your expertise. This concludes the structure part of the interview. Before we end, do you have any additional thoughts, reflections, or suggestions related to the topic of Azure DevOps program administration or permission management that you would like to share?
+
+
+Expert_1   25:03
+So, to completely understand the scoring system. Regarding how the factor is affecting and contributes to over-provisioning. For instance, there are too many users, you will not decrease the number of users in a project with this strategy, but if this management strategy  is used, this factor would have a have less impact on the problem of over-provisioning.
+
+Interviewer   25:22
+Exactly. The factor of having too many users in a project would be mitigated on the problem of overprovisioning.
+
+Expert_1   25:30
+OK, good. I think it's fine.
+
+Interviewer   25:42
+OK, great. Thank you again for your time and valuable insights.
+
+Expert_1   25:47
+Thank you too.
+
+Interviewer   25:49
+Bye.
+
+
+

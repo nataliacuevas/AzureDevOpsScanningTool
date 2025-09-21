@@ -1,0 +1,259 @@
+Transcript
+September 7, 2025, 4:05PM
+
+
+Interviewer   0:04
+So, before we begin, I would like to confirm a few points. This interview will be audio-recorded for research purposes only. Your responses will remain confidential, and any identifying information will be anonymized in the final report. Your participation is voluntary. You may decline to answer any question or withdraw from the interview at any time without consequence. 
+Do you agree to proceed with the interview under these conditions?
+
+Expert_2   0:38
+Yes.
+
+Interviewer   0:39
+Great! Thank you for agreeing to participate in this study. The purpose of this interview is to explore factors that contribute to the overprovisioning of Azure DevOps project administrators to assess the relative importance of those factors and to evaluate how a proposed mitigation strategy addresses them.
+The interview will follow 3 stages: 
+1. First, identifying factors contributing to over provisioning. 
+2. Second, assessing the relative impact of those factors.
+
+Expert_2   1:09
+Uh, so sorry, the second was what?
+
+Interviewer   1:11
+Assessing the relative impact of those factors.
+3. Third, evaluating how effectively the mitigation strategy addresses them. 
+Your expertise is central to this process and there are no right or wrong answers. I am interested in your professional perspective.
+
+Expert_2   1:14
+Ok.
+
+Interviewer   1:30
+Now, before we move to the main questions, I would like to collect some background information from you. What is your current role or area of professional practice?
+
+Expert_2   1:39
+I'm Azure DevOps and CI/CD engineer, and I'm working very deeply with Azure DevOps, AWS and Kubernetes.
+
+Interviewer   1:53
+And how many years of experience do you have in this area?
+
+Expert_2   1:58
+More than five.
+
+Interviewer   2:00
+What is your experience with Azure DevOps, particularly in relation to project administration and permissions management?
+
+Expert_2   2:08
+I am basically doing everything about it.
+
+Interviewer   2:11
+OK.
+So the primary question is, what would you say are factors that contribute to the over-provisioning of Azure DevOps project administrators?
+
+Expert_2   2:22
+It's very easy to create them (project administrator roles), to just give someone rights so they can start using it. And it's just getting things done is more often the biggest goal than security, because security can always be fixed afterwards.
+To deliver now and not later.
+
+Interviewer   2:43
+OK. Can you think of factors that originate from the permission architecture of the platform?
+
+Expert_2   2:53
+Yes, you can't enforce that only specific groups or specific people can only be admin. You can't enforce a specific amount of maximum admins. So you have, yeah, basically the platform is allowing you to do everything.
+And if you are allowed to do everything, you will do everything, regardless if it's good or bad.
+
+Interviewer   3:17
+OK. Can you think of factors that originate from how users utilize the platform?
+
+Expert_2   3:26
+Yeah, the the user. Every user can be at some point be an admin.
+
+
+Interviewer   3:36
+And can you think of factors that originate from the responsibilities of the users?
+
+Expert_2   3:43
+No one wants to be responsible, but everyone wants to do everything.
+
+Interviewer   3:49
+Can you think of factors that originate from how teams typically organize themselves?
+
+Expert_2   3:57
+This is heavily depending on if a team is agile or not. Some teams are waterfall, then it's quite clear who is an admin, who is not. But if a team's team is agile then everyone should be able. So the magic was here is T-shaping, so everyone should be able to do everything then of course.
+Then at some point the permission chain distributes himself with an own living and you can't control it afterwards. So this is all about thinking to be agile or not.
+
+Interviewer   4:27
+OK. And can you think of factors that originate from standard reasons that are common in any platform that provides permission management?
+
+Expert_2   4:44
+Right now, no.
+
+Interviewer   4:47
+OK, so I wrote the list of mentioned factors in the table. You can see it on the shared screen. Would you agree with these factors?
+
+Expert_2   4:57
+Let me quickly check.
+
+
+Expert_2   5:11
+Yes, I agree with every part of them.
+
+Interviewer   5:14
+OK, great! Now, I would like you to consider the relative impact of the factors you mentioned. For each factor, please indicate whether you see it as having a low, medium or high impact on over-provisioning.
+These are described as:
+- Low impact: The factor contributes but only marginally.
+- Medium impact: the factor contributes substantially, though not decisively.
+- High impact: the factor is a primary driver of over-provisioning.
+
+Expert_2   5:49
+OK.
+
+
+Interviewer   5:53
+So let's go one by one. Easy to create project administrators or give someone rights.
+
+Expert_2   6:00
+This is low.
+
+Interviewer   6:01
+Getting things done is the biggest goal instead of security.
+
+Expert_2   6:06
+This is high.
+
+Interviewer   6:08
+You cannot enforce a maximum of admins.
+
+Expert_2   6:12
+Low.
+
+Interviewer   6:15
+Cannot enforce that someone administers a particular group.
+
+Expert_2   6:20
+Low.
+
+Interviewer   6:22
+Everyone can be at some point an admin.
+
+Expert_2   6:27
+Medium.
+
+Interviewer   6:28
+ No one wants to be responsible, but everyone wants to do everything.
+
+Expert_2   6:33
+High.
+
+Interviewer   6:36
+If the team is agile, everyone should be able to do everything, and everyone ends up being an admin.
+
+Expert_2   6:40
+High.
+
+Interviewer   6:43
+OK, next I will introduce the proposed mitigation strategy that aims to reduce the over-provisioning of Azure DevOps project administrators. The strategy is composed of two main units, a user management strategy, together with an enterprise-wide policy.
+The policy is to limit the number of Azure DevOps projects admins at the project level. This can be implemented by a scanning solution that alerts about violations of the policy. The second unit is a user management strategy where teams are compelled to exclusively use intra ID groups to assign permissions to users.
+And then to assign owners to these entry ID groups, which would take over the user management task. Do you have any questions regarding the proposed strategy?
+
+Expert_2   7:29
+Let me think. I think not, except how you will implement the scanning, which would be quite heavy.
+
+Interviewer   7:34
+The scanner would be used through a simple UI and with a PAT with only read writes.
+
+Expert_2   7:51
+I mean, the problem in the scanning would be that the Azure DevOps permissions are quite distributed across the whole Azure DevOps platform. So you can even grant permission to do this specifically on a single repository or even on a single branch.
+And this scanning would be quite heavy. Yeah, heavy in how much it has to scan. Quite complex.
+
+Interviewer   8:24
+OK, so.
+And this will be only for project administrators.
+
+Expert_2   8:31
+Yeah, but what a project administrator can do, and product administrator can force push to the master branch. If I own the master branch and someone gave me the permissions to force push on a master branch, then I can also do some such things.
+Without being a project administrator.
+
+Interviewer   8:49
+The thing is only to control the project admins. So the project admins are the ones who have power over everything, and then you can easily scan them by going through every project and just looking for the project administrators group.
+
+
+Interviewer   9:09
+If you have too many contributors, that's a different problem. That is not addressed by this Solution
+
+Expert_2   9:13
+OK, OK.
+
+Interviewer   9:32
+For each factor we discussed earlier, please indicate the degree to which you believe the mitigation strategy addresses it. You may choose from the following categories. - - No mitigation: It means the strategy does not address the factor.
+- Low mitigation: The strategy addresses the factor only marginally.
+- Medium mitigation: The strategy addresses the factor substantially, but not fully. - - High mitigation: The strategy completely addresses the factor. 
+So I will go one by one with you so you can score the proposed strategy.
+
+
+Expert_2   10:06
+Can you please repeat the strategy? So, having a scan on a project level, who is the project administrator? Yeah, project administrator, right?
+
+Interviewer   10:16
+Yes. So basically the scanner scans all the project administrators on all the projects of an organization, this would work only as a policy checker, and afterwards through the use of Entra ID.
+
+Expert_2   10:17
+OK.
+
+Interviewer   10:33
+This would be used as a user management strategy.
+
+Expert_2   10:40
+OK.
+
+Interviewer   10:40
+easy to create a project administrator or to give someone rights?
+
+Expert_2   10:50
+It's low.
+
+Interviewer   10:52
+Getting things done is the biggest goal instead of security.
+
+Expert_2   11:01
+Low.
+
+Interviewer   11:01
+Cannot enforce a maximum of admins.
+
+Expert_2   11:09
+Medium.
+
+Interviewer   11:11
+Cannot enforce that someone administers a particular group.
+
+Expert_2   11:16
+Medium.
+
+Interviewer   11:21
+Everyone can be an admin at some point.
+
+Expert_2   11:23
+High.
+
+Interviewer   11:27
+No one wants to be responsible, but everyone wants to do everything.
+
+Expert_2   11:30
+Medium.
+
+Interviewer   11:34
+If the team is agile, everyone should be able to do everything and everyone ends up being an admin.
+
+Expert_2   11:39
+Also medium.
+
+Interviewer   11:42
+OK, thank you for your participation and for sharing your expertise. This concludes the structured part of the interview. Before we end, do you have any additional thoughts, reflections or suggestions related to the topic of Azure DevOps Prior administration or permission management that you would like to share?
+
+Expert_2   12:00
+This proposed strategy, the scanner, should not only scan but also remove those admins who are not accidentally put there or wrongly put there. Then it would not only be a scanner but also an enforcement tool. And then most of those points here would go from low or medium to high.
+
+Interviewer   12:21
+Perfect. Thank you so much and thank you again for your time and valuable insights.
+
+Expert_2   12:28
+OK then have a good day.
+
