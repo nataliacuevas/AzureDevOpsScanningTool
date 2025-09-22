@@ -1,0 +1,195 @@
+September 10, 2025, 2:10PM
+
+Interviewer   0:04
+Before we begin, I would like to confirm a few points. This interview will be audio recorded for research purposes only. Your responses will remain confidential and any identifying information will be anonymized in the final report.
+Participation is voluntary. You may decline to answer any question or withdraw from the interview at any time without consequence. Do you agree to proceed with the interview under these conditions?
+
+Expert 4   0:31
+Yeah, sure.
+
+Interviewer   0:35
+So thank you for agreeing to participate in this study. The purpose of this interview is to explore factors that contribute to the overprovisioning of Azure DevOps project administrators, to assess the relative importance of those factors and to evaluate how a proposed mitigation strategy addresses them. The interview will follow 3 stages. First, identifying factors contributing to overprovisioning, second, assessing the relative impact of those factors, and 3rd, evaluating how effectively the mitigation strategy addresses them.
+Your expertise is central to this process and there are no right or wrong answers. I am interested in your professional perspective. Before we move to the main questions, I would like to collect some background information. 
+What is your current role or area of professional practice?
+
+Expert 4   1:29
+I'm working as a cloud engineer.
+
+
+Interviewer   1:33
+How many years?
+
+Expert 4   1:35
+I've been in this area for around five years.
+
+Interviewer   1:39
+Perfect. What is your experience with Azure DevOps, particularly in relation to project administration and permissions management?
+
+Expert 4   1:49
+I aided in onboarding Azure DevOps for an organization, and I performed the initial setup. Ever since I've been mostly working on a project level which is not directly dealing with permissions, but still subject to permission constraints.
+
+Interviewer   2:06
+OK, great. So, the primary question is what would you say are factors that contribute to the overprovisioning of Azure DevOps project administrators?
+
+Expert 4   2:13
+In my professional opinion, project administrators tend to be overprovisioned because it does make ways to get work done easier. And the more you restrict, the harder it becomes for people to typically deliver.
+For people to be able to perform a certain action, that you cannot do directly, you need to delegate to others. So, the unavailability is a problem of people I think, because it decreases/slows down delivery and 2nd the ease of getting somewhere because you may need to ask someone else because you may need to get approval and so on and so forth.
+
+Interviewer   3:00
+OK, so it allows getting work done easier delivery or to get somewhere. Can you think of factors that originate from the permission architecture of the platform?
+
+Expert 4   3:13
+Permission architecture. One I could think of is if the permission architecture is not granular, that is either because it doesn't allow to be set up in a granular way or because people haven't used that feature, it will lead to people to decide on giving 
+project administrator rights because then you are able to do everything and anything you would possibly need to do.
+
+Interviewer   3:38
+OK, can you think of factors that originate from how users utilize the platform?
+
+Expert 4   3:46
+Yes, users tend to be very lazy and again, the fewer obstacles they have to achieve their goal, the better in their view. And security is for most people, not the main concern.
+
+Interviewer   3:57
+OK, so users are lazy, and they are not focused on security.
+
+Expert 4   4:01
+Yes.
+
+Interviewer   4:02
+And can you think of factors that originate from the responsibilities of the users.
+
+Expert 4   4:09
+Yes. If you don't have a very strong notion of accountability, then overprovision will generally not have a negative impact. That's why it's somewhat crucial to have external reviews of parties whose main concern is security.
+
+
+Interviewer   4:27
+Perfect. And can you think of factors that originate from how teams typically organize themselves?
+
+Expert 4   4:37
+Well, if you don't have clearly defined roles, I would assume that you also end up with overprovisioning because then you don't have that one person that would be responsible to perform privileged actions, but everyone would more or less want to, you know, do it and then you have more project administrators than needed.
+
+Interviewer   4:51
+OK. And can you think of factors that originate from the services that the platform provides?
+
+Expert 4   5:04
+No, I can't think of something off the top of my head.
+
+Interviewer   5:08
+OK. And can you think of factors that originate from standard reasons that are common in any platform that provides permission management?
+
+Expert 4   5:22
+I think that would be captured with how these platforms are used to be honest. So, for some platforms they may not be granular enough, which would be the top two factors or people are not using the features of the platform, that would be another factor 
+
+
+Interviewer   5:45
+OK, perfect. Now I would like to ask you to consider the relative impact of the factors that you mentioned. For each factor, please indicate whether you see it as having a low, medium or high impact on overprovisioning. These are described as:
+-	 low impact: It means the factor contributes, but only marginally
+-	 Medium impact the factor contributes substantially, though not decisively 
+-	high impact. It means that the factor is a primary driver of overprovisioning
+
+ So, we can go one by one so you can score them.
+ The first one, it allows getting work done easier, delivery eager to get somewhere.
+
+Expert 4   6:23
+medium.
+
+Interviewer   6:30
+Not granular enough.
+
+Expert 4   6:34
+Low.
+
+Interviewer   6:35
+users are lazy.
+
+Expert 4   6:38
+High.
+
+Interviewer   6:40
+Security is not the main concern.
+
+Expert 4   6:44
+High
+
+Interviewer   6:47
+There is no notion of accountability with respect of over provisioning.
+
+Expert 4   6:56
+High.
+
+Interviewer   6:59
+And there's a lack of clearly defined roles.
+
+Expert 4   7:02
+Medium.
+
+Interviewer   7:03
+Video OK, so next I will introduce a proposed mitigation strategy that aims to reduce the overprovisioning of Azure DevOps project administrators. The strategy is composed of two main units, a user management strategy together with an enterprise-wide policy.
+The policy is to limit the number of Azure DevOps project administrators at the project level. This can be implemented by a scanning solution that alerts about violations of the policy. The second unit is a user management strategy where the teams are compelled to exclusively use Entra ID groups to assign permissions to users.
+And then to assign owners to these intra ID groups which would take over the user management tasks. Do you have any questions regarding the proposed strategy?
+
+Expert 4   7:51
+Nope, that is clear to me.
+
+Interviewer   7:54
+OK, so for each factor that we discussed earlier, please indicate the degree to which you believe this mitigation strategy addresses it. You may choose from the following categories: 
+-	No mitigation: It means the strategy does not address the factor. 
+-	Low mitigation: the strategy addresses the factor only marginally.
+-	Medium mitigation: The strategy addresses the factor substantially, but not fully
+-	High mitigation: The strategy completely addresses the factor. 
+
+OK, so we can go back one by one again, so.
+
+Expert 4   8:29
+Yes.
+
+Interviewer   8:30
+It allows getting work done easier (delivery, to get somewhere)
+
+Expert 4   8:35
+Uh, I'm going to say no mitigation on this one.
+
+Interviewer   8:37
+OK.
+
+
+Interviewer   8:39
+Not granular enough.
+
+Expert 4   8:43
+Um, low.
+
+Interviewer   8:46
+Users are lazy.
+
+Expert 4   8:53
+High.
+
+Interviewer   8:54
+Security is not the main concern.
+
+Expert 4   8:58
+Medium.
+
+Interviewer   9:01
+There is no notion of accountability with respect of overprovisioning.
+
+Expert 4   9:06
+High.
+
+Interviewer   9:07
+And lack of clearly defined roles.
+
+Expert 4   9:11
+Low.
+
+Interviewer   9:15
+OK, perfect. Thank you for your participation and for sharing your expertise. This concludes the structured part of the interview. Before we end, do you have any additional thoughts, reflections or suggestions related to the topic of Azure DevOps project administration or permission management that you would like to share?
+
+Expert 4   9:34
+No, I don't.
+
+Interviewer   9:36
+OK. Thank you again for your time and valuable insights. 
+
+
+

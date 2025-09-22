@@ -1,0 +1,251 @@
+Transcript
+September 9, 2025, 1:05PM
+
+
+Interviewer   0:04
+Before we begin, I would like to confirm a few points. This interview will be audio recorded for research purposes only. Your responses will remain confidential and any identifying information will be anonymized in the final report.
+Participation is voluntary. You may decline to answer any question or withdraw from the interview at any time without consequence. Do you agree to proceed with the interview under these conditions?
+
+   0:33
+Definitely.
+
+Interviewer   0:36
+OK, great! Thank you for agreeing to participate in this study. The purpose of this interview is to explore factors that contribute to the over-provisioning of Azure DevOps project administrators, to assess the relative importance of those factors, and to evaluate how a proposed mitigation strategy addresses them.
+The interview will follow 3 stages:
+1.  identifying factors contributing to our provisioning
+2. assessing the relative impact of those factors
+3. evaluating how effectively the mitigation strategy addresses them. 
+Your expertise is central to this process and there are no right or wrong answers.
+I am interested in your professional perspective. Before we move to the main questions, I would like to collect some background information. What is your current role or area of professional practice?
+
+Expert 3   1:24
+Well, I'm a security architect, a security consultant and in my current role I'm also leading the cyber defense unit at a large customer.
+
+Interviewer   1:40
+Perfect. How many years of experience do you have in this area?
+
+Expert 3   1:45
+About 20 years.
+
+Interviewer   1:48
+What is your experience with Azure DevOps, particularly in relation to project administration and permissions management?
+
+Expert 3   1:49
+Well, quite a lot and also multiple years experience.
+
+Interviewer   2:02
+Perfect! the primary question is what would you say are factors that contribute to the overprovisioning of Azure DevOps project administrators?
+
+Expert 3   2:12
+Well, one thing for sure, simplicity. people always choose this most simple solution, and giving the admin rights is a simple thing and another one is quite limited the
+Permission management system on Azure DevOps itself and that that leads to the fact that you have to give an admin role in order to invite other people to a project.
+
+Interviewer   2:42
+OK, so first the simplicity of user selecting.
+
+Expert 3   2:49
+Well, I would simply say simplicity. users always go for the simplest solution, not for the most secure one, and thereby not following the so-called least privilege principle.
+
+Expert 3   3:09
+And obviously the simple solution is to give one a project administrator rights, because then they can do everything even if he does not need all these permissions.
+
+Interviewer   3:19
+simplest solution is to give someone project administrator rights. 
+Can you think of factors that originate from the permission architecture of the platform?
+
+Expert 3   3:28
+Yes, definitely. That’s what I mentioned. It's quite limited. So even for inviting new people to a project or adding new users to a project, you already need administrative rights.
+
+Interviewer   3:43
+And can you think of factors that originate from limitations of the platform?
+
+Expert 3   3:49
+Well, that is a limitation. That's a limitation with respect to the scoping on how I can give permissions because when I want to distribute the capability of adding users to a large project, then,  I already have to do it with the project administrator rights.
+
+Expert 3   4:07
+And that means that that I cannot really differentiate between different sections of the tool. So for example, task management or actual source code management.
+
+Interviewer   4:08
+OK, perfect. And can you think of factors that originate from the responsibilities of the users?
+
+Expert 3   4:35
+Well, let me think about it. That's an interesting question.
+I think it's always a combination. The responsibilities of the users alone would not be an issue. I mean the responsibility of the users alone is basically their responsibilities in the organization. But that together with the limitation that the platform brings,  that leads to over provisioning, so it´s always a combination of both, obviously.
+
+Interviewer   5:17
+OK, perfect. And can you think of factors that originate from how teams typically organize themselves?
+
+Expert 3   5:28
+Yes. That that comes back again with the very first thing. Obviously the teams, especially when they are emerging, when they start with small teams, they might not have rigorous security standards. So, they start growing this, the entire thing starts organically to grow.
+
+
+Expert 3   5:49
+And even some processes on how users are added to a team, how permissions are managed in the project also very often grow in a very uncontrolled manner. And that is different obviously if you are just like a professional software development company that develop one software project after the other. They have a much more rigorous project process compared to companies where the main focus is not on software development, but where software development is just a means to an end.
+
+Interviewer   6:22
+Perfect.  And can you think of factors that originate from the services that the platform provides?
+
+Expert 3   6:35
+At the moment, not.
+
+Interviewer   6:36
+OK. And can you think of factors that originate from standard reasons that are common in any platform that provides permission management?
+
+Expert 3   6:48
+Yes. It is quite common that the platform provides RBAC, so role based access control with respect to different aspects of the platform. For example, if you say yo have access to the pipeline’s portions of the tool or you have access to the source code repository, but the thing which is quite uncommon is exactly when you want to delegate rights to delegate. So that means that I would like to have an option to define administrators who have the right to invite others for a very scoped action and that is not possible in most of the platforms, you have to find a way around.
+
+Interviewer   7:49
+OK. So now I'm going to ask you to check on the table with the factors, if you agree with the with the factors mentioned.
+
+Interviewer   8:06
+So if by any chance you find you think of another one or you would like to make any changes to the ones that you mentioned.
+
+Expert 3   8:28
+Number six here. It’s not just a combination of user roles. I think that the issue is the combination of the roles of the user and the capabilities of the platform.
+
+Interviewer   8:33
+OK, perfect. 
+
+Expert 3   8:46
+Yes. So just like that, that would be an option for example you can have someone who is leader of the bug fixing program, of a solution and he would like to work on customer tickets so that alone would not be an issue. That's his role that he has.
+But that in combination to the permissions that the platform allows you to define that poses a problem and that then leads to over provisioning.
+
+Interviewer   9:19
+OK. 
+
+Expert 3   9:21
+Yes, it's good. Wait, there is no way to provide scope rights. I would add that factor
+
+Expert 3   9:40
+In #8, so in the Section 8, I would really say there is no way to provide the rights.
+To other users to write scope writes exactly like that, yeah.
+
+Interviewer   9:51
+OK, perfect. So now I would like to ask you to consider the relative impact of the factors you mentioned. For each factor, please indicate whether you see it as having a low, medium or high impact on overprovisioning. These are described as: 
+
+-	Low impact the factor. It means that the factor contributes, but only marginally. 
+-	Medium impact the factor contributes substantially to the problem of over provisioning, though not decisively. 
+-	High impact the factor is a primary driver of over provisioning.
+
+OK, so we can go one by one so you can score them.
+So users go with the simplest solution, not following the principle of least privilege.
+
+Expert 3   10:33
+That is definitely high.
+
+Interviewer   10:45
+Perfect.  and the 2nd simplest solution is to give someone project admin rights.
+
+Expert 3   10:52
+That is medium I would say. I mean you can go for a less simple solution.
+
+Interviewer   10:56
+To invite users, the least power is to give project admin rights.
+
+Expert 3   11:04
+That's high. That's a technical limitation.
+
+Interviewer   11:07
+Cannot really differentiate between different sections of the role to provide rights.
+
+Expert 3   11:16
+And that's also high.
+
+Interviewer   11:19
+Combination of user roles and the capabilities of the platform.
+
+Expert 3   11:30
+I would also say high.
+
+Interviewer   11:32
+Teams organically grow and permissions grow in an uncontrolled manner.
+
+Expert 3   11:40
+Medium. There's a lot that you could do about it.
+
+Interviewer   11:43
+The platform provides RBAC to different portions and typically there is no way to provide scope rights.
+
+Expert 3   11:52
+I would say that's high. That's a problem again, that you need to wait to circumvent.
+
+Interviewer   11:59
+So next I will introduce a proposed mitigation strategy that aims to reduce the over provisioning of Azure DevOps project administrators. The strategy is composed of two main units, a user management strategy together with an enterprise-wide policy.
+
+
+Interviewer   12:17
+The policy is to limit the number of Azure DevOps project administrators at the project level. This can be implemented by a scanning solution that alerts about violations of the policy. The second unit is a user management strategy where the teams are compelled to exclusively use Entra ID groups to assign permissions to users.
+And then to assign owners to these intra ID groups which would take over the user management task. Do you have any questions regarding the proposed strategy?
+
+Expert 3   12:48
+Well, with the first one is the question this policy. How is the policy defined? When does it give a warning and how does it give a warning?
+
+Interviewer   12:57
+So the policy checker would be a simple UI.
+And that works with a personal access token only with read writes. The user should be able to configure the policy on the UI like the maximum amount of project administrators.
+Then when you enter the personal access token, this will scan the whole organization, all the projects in the organization, and it will highlight all the project administrators of each project and if there's any project that has more project administrators that the policy stated. It appears a warning.
+
+Expert 3   13:47
+OK, makes sense.
+
+Interviewer   13:48
+So for each factor we discussed earlier, please indicate the degree to which you believe this mitigation strategy addresses it. You may choose from the following categories: 
+-	No mitigation. It means the strategy does not address this factor at all.
+-	Low mitigation. The strategy addresses the factor only marginally. 
+-	Medium mitigation. The strategy addresses the factor substantially, but not fully. 
+-	High mitigation. The strategy completely addresses the factor. 
+Let's go 1 by 1. Again, users go with the simplest solution, not following PoLP.
+
+Expert 3   14:32
+High.
+
+Interviewer   14:32
+The simplest solution is to give someone project admin rights.
+
+Expert 3   14:39
+High
+
+Interviewer   14:42
+To invite users, the least power is to give project admin rights.
+
+Expert 3   14:47
+High, definitely.
+
+Interviewer   14:50
+Cannot really differentiate between different sections of the role to provide rights.
+
+Expert 3   14:55
+High, it's a soft.
+
+Interviewer   14:58
+Combination of user roles and the capabilities of the platform.
+
+Expert 3   15:08
+I would also give it a high there, I would say.
+
+Interviewer   15:14
+OK, teams organically grow and permissions grow in an uncontrolled manner.
+
+Expert 3   15:23
+That I would give here a low.
+
+Interviewer   15:31
+Ok, perfect. And typically there is no way to provide rights to provide scope rights.
+
+Expert 3   15:40
+That's definitely high. You know what, I would give factor 6 also medium.
+
+Interviewer   15:41
+Number six combination of user roles and the capabilities of the platform. Medium. Perfect.
+
+Expert 3   15:49
+Yes, because with that approach you solve the capabilities of the platform, but still, you know, if user roles are in the organization stupidly defined, it targets only a little bit. Yeah, but I think that's good.
+
+Interviewer   16:01
+OK, perfect. Thank you for your participation and for sharing your expertise. This concludes the structured part of the interview. Before we end, do you have any additional thoughts, reflections or suggestions related to the topic of Azure DevOps project administration or permission management that you would like to share?
+
+Expert 3   16:25
+Not really, but I'm quite convinced that that your proposed approach would be definitely very helpful in reducing this problem that we see typically Azure DevOps as well the entire DevOps is one very important part in security that you have to secure your default pipeline, so I think it's very valuable the contribution that you're proposing here.
+
+
+
